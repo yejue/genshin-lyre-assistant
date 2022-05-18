@@ -105,7 +105,6 @@ class AssistantView(QWidget, Ui_lyre_assitant):
 
     def hotkey_pressed_event(self, hotkey):
         """热键相应事件"""
-        print(hotkey)
         # 检验演奏列表是否为空，空则取消注册快捷键，将停止按键置灰，将 start 置白
         if not self.play.play_list:
             self.play_one.unregister(constant.PLAY_HOT_KEY)
