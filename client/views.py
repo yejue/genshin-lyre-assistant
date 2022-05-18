@@ -1,10 +1,55 @@
+import uuid
+import json
 import system_hotkey
-from PyQt5.QtWidgets import QWidget, QTableWidgetItem, QAbstractItemView, QHeaderView
+
+from pathlib import Path
+from PyQt5.QtWidgets import QWidget, QTableWidgetItem, QAbstractItemView, QHeaderView, QMessageBox
 from PyQt5.QtCore import pyqtSignal
 
 from genshin_assistant.play import Play
+from genshin_assistant.settings import SONG_DIR
 from .ui.lyre_assitant import Ui_lyre_assitant
+from .ui.editor import Ui_editor
 from . import constant
+
+
+class EditorView(QWidget, Ui_editor):
+    """编写曲谱页面视图"""
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
+        self.set_addition_ui()
+        self.set_slot_function()
+
+    def set_addition_ui(self):
+        """额外的 UI 设置"""
+        self.tb_msg_area.setMarkdown(constant.EDITOR_TIPS)
+
+    def set_slot_function(self):
+        """统一设置绑定槽函数"""
+        self.pb_save.clicked.connect(self.save_song)  # 保存按钮
+
+    def save_song(self):
+        """曲谱保存"""
+        temp_dict = {"beat_frequency": 0.3}
+
+        song_name = self.le_song_name.text().strip()
+        if song_name == "":
+            song_name = uuid.uuid4().hex  # 曲谱名为空时自动保存
+
+        song_list = self.te_edit_area.toPlainText().split("\n")
+        song_list_ = []
+
+        for k in song_list:  # 过滤空白曲谱
+            if k.strip() == "":
+                continue
+            song_list_.append(k)
+
+        temp_dict["press_list"] = song_list_
+        with open(Path(SONG_DIR).joinpath(song_name), "w") as f:  # 保存到曲谱目录
+            f.write(json.dumps(temp_dict))
+
+        return QMessageBox.information(self, "风琴写者", "保存成功", QMessageBox.Ok)
 
 
 class AssistantView(QWidget, Ui_lyre_assitant):
@@ -20,6 +65,7 @@ class AssistantView(QWidget, Ui_lyre_assitant):
 
         self.play_one = system_hotkey.SystemHotkey()  # 弹奏热键
         self.set_slot_function()  # 绑定槽函数
+        self.editor = EditorView()
 
     def set_addition_ui(self):
         """额外的 UI 设置"""
@@ -37,6 +83,7 @@ class AssistantView(QWidget, Ui_lyre_assitant):
         """统一设置绑定槽函数"""
         self.pb_play.clicked.connect(self.play_start)  # 开始按钮
         self.pb_stop.clicked.connect(self.play_stop)  # 停止按钮
+        self.pb_edit.clicked.connect(self.show_editor)  # 编写按钮
 
     def set_song_list(self):
         """获取曲目表"""
@@ -51,6 +98,7 @@ class AssistantView(QWidget, Ui_lyre_assitant):
 
     def hotkey_pressed_event(self, hotkey):
         """热键相应事件"""
+        print(hotkey)
         # 检验演奏列表是否为空，空则取消注册快捷键，将停止按键置灰，将 start 置白
         if not self.play.play_list:
             self.play_one.unregister(constant.PLAY_HOT_KEY)
@@ -85,3 +133,7 @@ class AssistantView(QWidget, Ui_lyre_assitant):
         """窗口关闭事件"""
         if constant.PLAY_HOT_KEY in self.play_one.keybinds:
             self.play_one.unregister(constant.PLAY_HOT_KEY)  # 取消注册弹奏热键
+
+    def show_editor(self):
+        """编写曲谱视图"""
+        self.editor.show()

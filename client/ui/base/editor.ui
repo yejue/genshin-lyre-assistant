@@ -36,26 +36,23 @@
     <number>9</number>
    </property>
    <item>
-    <widget class="QScrollArea" name="sa_edit_area">
+    <widget class="QTextBrowser" name="tb_msg_area">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
        <horstretch>0</horstretch>
-       <verstretch>2</verstretch>
+       <verstretch>1</verstretch>
       </sizepolicy>
      </property>
-     <property name="widgetResizable">
-      <bool>true</bool>
+    </widget>
+   </item>
+   <item>
+    <widget class="QTextEdit" name="te_edit_area">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>3</verstretch>
+      </sizepolicy>
      </property>
-     <widget class="QWidget" name="scrollAreaWidgetContents">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>592</width>
-        <height>233</height>
-       </rect>
-      </property>
-     </widget>
     </widget>
    </item>
    <item>
@@ -106,28 +103,12 @@
        </spacer>
       </item>
       <item>
-       <widget class="QPushButton" name="pb_add">
-        <property name="sizeIncrement">
-         <size>
-          <width>1</width>
-          <height>1</height>
-         </size>
-        </property>
-        <property name="baseSize">
-         <size>
-          <width>30</width>
-          <height>30</height>
-         </size>
-        </property>
+       <widget class="QLineEdit" name="le_song_name">
         <property name="text">
-         <string>+</string>
+         <string/>
         </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="pb_delete">
-        <property name="text">
-         <string>-</string>
+        <property name="placeholderText">
+         <string>在此输入曲谱名字</string>
         </property>
        </widget>
       </item>
