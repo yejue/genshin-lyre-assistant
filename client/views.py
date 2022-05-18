@@ -15,11 +15,13 @@ from . import constant
 
 class EditorView(QWidget, Ui_editor):
     """编写曲谱页面视图"""
-    def __init__(self):
+    def __init__(self, assistant_signals):
         super().__init__()
         self.setupUi(self)
         self.set_addition_ui()
         self.set_slot_function()
+
+        self.assistant_signals = assistant_signals  # 风琴助手首页的信号表
 
     def set_addition_ui(self):
         """额外的 UI 设置"""
@@ -35,7 +37,7 @@ class EditorView(QWidget, Ui_editor):
 
         song_name = self.le_song_name.text().strip()
         if song_name == "":
-            song_name = uuid.uuid4().hex  # 曲谱名为空时自动保存
+            song_name = f"未命名曲谱_{uuid.uuid4().hex[:4]}"  # 曲谱名为空时自动保存
 
         song_list = self.te_edit_area.toPlainText().split("\n")
         song_list_ = []
@@ -49,12 +51,14 @@ class EditorView(QWidget, Ui_editor):
         with open(Path(SONG_DIR).joinpath(song_name), "w") as f:  # 保存到曲谱目录
             f.write(json.dumps(temp_dict))
 
+        self.assistant_signals["fresh_signal"].emit("editor")
         return QMessageBox.information(self, "风琴写者", "保存成功", QMessageBox.Ok)
 
 
 class AssistantView(QWidget, Ui_lyre_assitant):
     """风琴助手视窗"""
     hotkey_signal = pyqtSignal(str)  # 热键发送信号
+    fresh_signal = pyqtSignal(str)  # 页面刷新
 
     def __init__(self):
         super().__init__()
@@ -65,7 +69,7 @@ class AssistantView(QWidget, Ui_lyre_assitant):
 
         self.play_one = system_hotkey.SystemHotkey()  # 弹奏热键
         self.set_slot_function()  # 绑定槽函数
-        self.editor = EditorView()
+        self.editor = EditorView({"fresh_signal": self.fresh_signal})
 
     def set_addition_ui(self):
         """额外的 UI 设置"""
@@ -84,10 +88,12 @@ class AssistantView(QWidget, Ui_lyre_assitant):
         self.pb_play.clicked.connect(self.play_start)  # 开始按钮
         self.pb_stop.clicked.connect(self.play_stop)  # 停止按钮
         self.pb_edit.clicked.connect(self.show_editor)  # 编写按钮
+        self.fresh_signal.connect(self.set_song_list)  # 刷新页面
 
     def set_song_list(self):
         """获取曲目表"""
         song_list_obj = self.play.get_song_list()
+        self.tw_song.setRowCount(0)  # 清空列表
         for index, obj in enumerate(song_list_obj):
             name_item = QTableWidgetItem(obj.name)
             name_path = QTableWidgetItem(str(obj.absolute()))
