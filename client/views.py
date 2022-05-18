@@ -12,9 +12,9 @@ class AssistantView(QWidget, Ui_fengqin_assitant):
         self.setupUi(self)  # 界面初始化
         self.play = PlaySong()  # 实例化风琴演奏类
         self.set_song_list()
-        self.addition_ui()  # Designer 额外的 UI 设置
+        self.set_addition_ui()  # Designer 额外的 UI 设置
 
-    def addition_ui(self):
+    def set_addition_ui(self):
         """额外的 UI 设置"""
         self.lw_song.setEditTriggers(QAbstractItemView.NoEditTriggers)  # 歌曲列表不可编辑
 
