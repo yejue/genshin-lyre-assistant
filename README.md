@@ -31,6 +31,10 @@
 
 ![image-2](source/mdSource/2.png)
 
+### 1.3 曲谱来源
+
+**指尖灬旋律丿**@bilibili https://space.bilibili.com/76052941
+
 ## TODOs
 
 - [x] 基础功能，手动演奏
