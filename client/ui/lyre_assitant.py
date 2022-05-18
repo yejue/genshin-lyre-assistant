@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_lyre_assitant(object):
     def setupUi(self, lyre_assitant):
         lyre_assitant.setObjectName("lyre_assitant")
-        lyre_assitant.resize(351, 261)
+        lyre_assitant.resize(491, 432)
         self.gridLayout = QtWidgets.QGridLayout(lyre_assitant)
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
         self.gridLayout.setSpacing(0)

@@ -52,7 +52,8 @@ class EditorView(QWidget, Ui_editor):
             f.write(json.dumps(temp_dict))
 
         self.assistant_signals["fresh_signal"].emit("editor")
-        return QMessageBox.information(self, "风琴写者", "保存成功", QMessageBox.Ok)
+        QMessageBox.information(self, "风琴写者", "保存成功", QMessageBox.Ok)
+        self.hide()
 
 
 class AssistantView(QWidget, Ui_lyre_assitant):
