@@ -1,10 +1,10 @@
 from PyQt5.QtWidgets import QWidget, QAbstractItemView
 
 from genshin_assistant.play import PlaySong
-from .ui.fengqin import Ui_fengqin_assitant
+from .ui.lyre_assitant import Ui_lyre_assitant
 
 
-class AssistantView(QWidget, Ui_fengqin_assitant):
+class AssistantView(QWidget, Ui_lyre_assitant):
     """风琴助手视窗"""
 
     def __init__(self):

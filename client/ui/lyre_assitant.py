@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'fengqin.ui'
+# Form implementation generated from reading ui file '.\lyre_assitant.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.6
 #
@@ -11,15 +11,15 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_fengqin_assitant(object):
-    def setupUi(self, fengqin_assitant):
-        fengqin_assitant.setObjectName("fengqin_assitant")
-        fengqin_assitant.resize(351, 261)
-        self.gridLayout = QtWidgets.QGridLayout(fengqin_assitant)
+class Ui_lyre_assitant(object):
+    def setupUi(self, lyre_assitant):
+        lyre_assitant.setObjectName("lyre_assitant")
+        lyre_assitant.resize(351, 261)
+        self.gridLayout = QtWidgets.QGridLayout(lyre_assitant)
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
         self.gridLayout.setSpacing(0)
         self.gridLayout.setObjectName("gridLayout")
-        self.gb_toolbar = QtWidgets.QGroupBox(fengqin_assitant)
+        self.gb_toolbar = QtWidgets.QGroupBox(lyre_assitant)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(1)
         sizePolicy.setVerticalStretch(0)
@@ -53,7 +53,7 @@ class Ui_fengqin_assitant(object):
         spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout_2.addItem(spacerItem)
         self.gridLayout.addWidget(self.gb_toolbar, 0, 1, 1, 1)
-        self.lw_song = QtWidgets.QListWidget(fengqin_assitant)
+        self.lw_song = QtWidgets.QListWidget(lyre_assitant)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(2)
         sizePolicy.setVerticalStretch(0)
@@ -62,12 +62,12 @@ class Ui_fengqin_assitant(object):
         self.lw_song.setObjectName("lw_song")
         self.gridLayout.addWidget(self.lw_song, 0, 0, 1, 1)
 
-        self.retranslateUi(fengqin_assitant)
-        QtCore.QMetaObject.connectSlotsByName(fengqin_assitant)
+        self.retranslateUi(lyre_assitant)
+        QtCore.QMetaObject.connectSlotsByName(lyre_assitant)
 
-    def retranslateUi(self, fengqin_assitant):
+    def retranslateUi(self, lyre_assitant):
         _translate = QtCore.QCoreApplication.translate
-        fengqin_assitant.setWindowTitle(_translate("fengqin_assitant", "风琴小助手"))
-        self.pb_play.setText(_translate("fengqin_assitant", "开始"))
-        self.pb_stop.setText(_translate("fengqin_assitant", "停止"))
-        self.pb_edit.setText(_translate("fengqin_assitant", "编写"))
+        lyre_assitant.setWindowTitle(_translate("lyre_assitant", "风琴小助手"))
+        self.pb_play.setText(_translate("lyre_assitant", "开始"))
+        self.pb_stop.setText(_translate("lyre_assitant", "停止"))
+        self.pb_edit.setText(_translate("lyre_assitant", "编写"))

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>fengqin_assitant</class>
- <widget class="QWidget" name="fengqin_assitant">
+ <class>lyre_assitant</class>
+ <widget class="QWidget" name="lyre_assitant">
   <property name="geometry">
    <rect>
     <x>0</x>
