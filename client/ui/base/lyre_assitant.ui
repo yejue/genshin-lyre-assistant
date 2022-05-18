@@ -106,13 +106,23 @@
     </widget>
    </item>
    <item row="0" column="0">
-    <widget class="QListWidget" name="lw_song">
+    <widget class="QTableWidget" name="tw_song">
      <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+      <sizepolicy hsizetype="Preferred" vsizetype="Ignored">
        <horstretch>2</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
+     <column>
+      <property name="text">
+       <string>name</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>path</string>
+      </property>
+     </column>
     </widget>
    </item>
   </layout>
