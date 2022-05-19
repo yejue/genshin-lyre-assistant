@@ -1,3 +1,4 @@
+import re
 import uuid
 import json
 import system_hotkey
@@ -42,10 +43,11 @@ class EditorView(QWidget, Ui_editor):
         song_list = self.te_edit_area.toPlainText().split("\n")
         song_list_ = []
 
-        for k in song_list:  # 过滤空白曲谱
-            if k.strip() == "":
+        for k in song_list:
+            if k.strip() == "":  # 空白曲谱跳过
                 continue
-            song_list_.append(k)
+            k_ = re.sub("[^a-zA-Z]+", "", k)  # 过滤非字母字符
+            song_list_.append(k_)
 
         temp_dict["press_list"] = song_list_
         with open(Path(SONG_DIR).joinpath(song_name), "w") as f:  # 保存到曲谱目录
