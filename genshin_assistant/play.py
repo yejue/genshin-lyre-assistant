@@ -29,6 +29,5 @@ class Play:
         """演奏一个节拍"""
         if self.play_list:
             key = self.play_list.pop(0)
-            print(key)
             for k in list(key):
                 self.simulator.send_key(k)
