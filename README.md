@@ -36,6 +36,12 @@
 **指尖灬旋律丿**@bilibili https://space.bilibili.com/76052941
 **呱呱瓜能有什么坏心思**@bilibili https://space.bilibili.com/16948034
 
+**原琴玩家伊蕾娜**@bilibili https://space.bilibili.com/79355209
+
+**小柴胡今天起床了吗**@bilibili https://space.bilibili.com/2576590
+
+**bilibala**@Q群：654367882
+
 ## TODOs
 
 - [x] 基础功能，手动演奏
