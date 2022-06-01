@@ -6,6 +6,8 @@
 
 开发时游戏版本：2.6
 
+已使用游戏版本：2.6、2.7
+
 ### 1.1 快速启动
 
 1. 安装 python 依赖。`pip install requirements.txt`
