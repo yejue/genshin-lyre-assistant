@@ -11,7 +11,7 @@
 ### 1.1 快速启动
 
 1. 安装 python 依赖。`pip install requirements.txt`
-2. 启动，双击 manage.py 或  `python manage.py`
+2. 启动，双击 manage.py 或  `python run.py`
 
 ### 1.2 使用指南
 
